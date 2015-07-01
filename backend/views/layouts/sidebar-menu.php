@@ -14,33 +14,13 @@ echo Menu::widget(
                 'active' => Yii::$app->request->url === Yii::$app->homeUrl
             ],
             [
-                'label' => Yii::t('app', 'Settings'),
-                'url' => ['#'],
-                'icon' => 'fa fa-spinner',
-                'options' => [
-                    'class' => 'treeview',
-                ],
-                'visible' => Yii::$app->user->can('readPost'),
-                'items' => [
-                    [
-                        'label' => Yii::t('app', 'Basic'),
-                        'url' => ['/basic/index'],
-                        'icon' => 'fa fa-user',
-                    ],
-                    [
-                        'label' => Yii::t('app', 'Advanced'),
-                        'url' => ['/advanced/index'],
-                        'icon' => 'fa fa-lock',
-                    ],
-                ],
-            ],
-            [
                 'label' => Yii::t('app', 'System'),
                 'url' => ['#'],
                 'icon' => 'fa fa-cog',
                 'options' => [
                     'class' => 'treeview',
                 ],
+                'visible' => Yii::$app->user->can('admin'),
                 'items' => [
                     [
                         'label' => Yii::t('app', 'User'),

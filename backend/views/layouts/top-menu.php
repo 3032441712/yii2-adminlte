@@ -27,51 +27,20 @@ echo Nav::widget([
 
 $menuItemsMain = [
     [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Blog'),
+        'label' => '<i class="fa fa-cog"></i> 个人信息',
         'url' => ['#'],
         'active' => false,
         'items' => [
             [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Catalog'),
-                'url' => ['/blog/blog-catalog'],
+                'label' => '<i class="fa fa-user"></i> 信息分类',
+                'url' => ['/accountCategory'],
             ],
             [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Post'),
-                'url' => ['/blog/blog-post'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Comment'),
-                'url' => ['/blog/blog-comment'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Tag'),
-                'url' => ['/blog/blog-tag'],
+                'label' => '<i class="fa fa-user-md"></i> 信息列表',
+                'url' => ['/account'],
             ],
         ],
-        'visible' => Yii::$app->user->can('readPost'),
-    ],
-    [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Cms'),
-        'url' => ['#'],
-        'active' => false,
-        'items' => [
-            [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Catalog'),
-                'url' => ['/blog/default/blog-catalog'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Post'),
-                'url' => ['/blog/default/blog-post'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Comment'),
-                'url' => ['/blog/default/blog-comment'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Tag'),
-                'url' => ['/blog/default/blog-tag'],
-            ],
-        ],
+        'visible' => Yii::$app->user->can('account'),
     ],
     [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
@@ -88,6 +57,7 @@ $menuItemsMain = [
                 'url' => ['/role'],
             ],
         ],
+        'visible' => Yii::$app->user->can('admin'),
     ],
 ];
 echo Nav::widget([
