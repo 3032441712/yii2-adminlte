@@ -13,13 +13,14 @@ getcomposer.org
 
 1. git clone https://github.com/3032441712/yii2-adminlte/tree/person.
 2. Run command: `cd /my/path/to/person/` and go to main application directory.
-3. Run command: `php requirements.php` and check the requirements.
-4. Run command: `php init` to initialize the application with a specific environment.
-5. 创建一个数据库,并修改配置文件 `common/config/main-local.php` accordingly.
-6. Run command: `yii migrate` 初始化数据库:
+3. Run command: `composer install`,初始化项目的类包.
+4. Run command: `php requirements.php` and check the requirements.
+5. Run command: `php init` to initialize the application with a specific environment.
+6. 创建一个数据库,并修改配置文件 `common/config/main-local.php` accordingly.
+7. Run command: `yii migrate` 初始化数据库:
    - m140608_201405_user_init : user table
    - m140608_201406_rbac_init : rabc 4 tables of auth_assignment, auth_item, auth_item_child, auth_rule. same to yiisoft/yii2/rbac/migrations/schema-mysql.sql
-7. This will create tables needed for the application to work.
+8. This will create tables needed for the application to work.
 
 common/config/main-local.php rbac权限管理的配置项
 'modules' => [
