@@ -33,7 +33,7 @@ $menuItemsMain = [
         'items' => [
             [
                 'label' => '<i class="fa fa-user"></i> 信息分类',
-                'url' => ['/accountCategory'],
+                'url' => ['/account-category'],
             ],
             [
                 'label' => '<i class="fa fa-user-md"></i> 信息列表',
