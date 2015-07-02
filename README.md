@@ -1,47 +1,55 @@
 Yii2-Adminlte
 ==========
 
-Backend user & password:
+后台用户与密码:
 Login: `admin`
 Password: `qwe1234`
 
-Installation and getting started:
+安装和启动项目:
 ---------------------------------
 
-If you do not have Composer, you may install it by following the instructions at getcomposer.org.
+需要先安装PHP的包管理管理工具,没有安装的可以到这里下载:
+getcomposer.org
 
-1. Run the following command: `php composer.phar create-project --stability=dev funson86/yii2-adminlte yii2-adminlte` to install Yii2-Adminlte.
-2. Run command: `cd /my/path/to/yii2-adminlte/` and go to main application directory.
+1. git clone https://github.com/3032441712/yii2-adminlte/tree/person.
+2. Run command: `cd /my/path/to/person/` and go to main application directory.
 3. Run command: `php requirements.php` and check the requirements.
 4. Run command: `php init` to initialize the application with a specific environment.
-5. Create a new database and adjust it configuration in `common/config/main-local.php` accordingly.
-6. Run command: `yii migrate` to apply migrations with console commands:
+5. 创建一个数据库,并修改配置文件 `common/config/main-local.php` accordingly.
+6. Run command: `yii migrate` 初始化数据库:
    - m140608_201405_user_init : user table
    - m140608_201406_rbac_init : rabc 4 tables of auth_assignment, auth_item, auth_item_child, auth_rule. same to yiisoft/yii2/rbac/migrations/schema-mysql.sql
 7. This will create tables needed for the application to work.
-8. You also can use database dump from `my/path/to/yii2-adminlte/tests/yii2-adminlte.sql`, but however I recommend to use migrations.
 
+common/config/main-local.php rbac权限管理的配置项
+'modules' => [
+    'admin' => [
+        'layout' => 'left-menu',
+        'class' => 'mdm\admin\Module',
+    ]
+],
 
 Usage
 -----
-- Use the URL `http://yii2-adminlte.domain` point to `yii2-adminlte/frontend/web/` to access application frontend.
-- Use the URL `http://backend.yii2-adminlte.domain` point to `yii2-adminlte/backend/web/` to access application backend.
+- Use the URL `http://127.0.0.1` point to `person/frontend/web/` to access application frontend.
+- Use the URL `http://127.0.0.1` point to `person/backend/web/` to access application backend.
+- Use the URL `http://127.0.0.1` point to `person/backend/web/admin` to access application rbac manger.
 
 
-Advanced Rbac
+Rbac 权限管理
 -------------
-- Run command: `yii migrate --migrationPath=@console/migrations/rbac` to add permission, add more rbac file here while your project growing.
+- Run command: `yii migrate --migrationPath=@console/migrations/rbac` 添加权限
 - To check weather show on top menu or side bar, add `'visible' => Yii::$app->user->can('readPost'),` in top-menu.php or sidebar-menu.php.
 - To check could run action. add `if(!Yii::$app->user->can('createPost')) throw new HttpException(401, 'No Auth');` in actionIndex, actionCreate, actionUpdate in XXXController.php file.
 
 Notes:
 ------
 
-By default will be created one super admin user with login `admin` and password `qwe1234`, you can use this data to sing in application frontend and backend.
+使用默认的用户  `admin` 和密码 `qwe1234` 登录后台
 
 Themes:
 -------
-- Application backend it's based on "AdminLTE" template. More detail about this nice template you can find [here](http://www.bootstrapstage.com/admin-lte/).
+- 应用后台使用的模板为  "AdminLTE". 更多关于该模板的信息 [here](http://www.bootstrapstage.com/admin-lte/).
 - Application frontend with default Yii2 advanced frontend page.
 
 
@@ -50,7 +58,7 @@ Preview:
 ![Yii2-Adminlte](tests/yii2-adminlte-preview.jpg)
 
 
-Related:
+项目相关的文档:
 -------
 - [Yii2-Gii](https://github.com/funson86/yii2-gii) : Gii for Yii2-Adminlte
 - [Yii2-Setting](https://github.com/funson86/yii2-Setting) : Common Setting for Yii2
