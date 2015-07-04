@@ -24,6 +24,8 @@ class Accounts extends \yii\db\ActiveRecord
     private $_userLabel;
 
     private $_statusLabel;
+    
+    private $_encryptHelper;
 
     public static function getArrayCategory()
     {
@@ -71,6 +73,15 @@ class Accounts extends \yii\db\ActiveRecord
         }
 
         return $this->_statusLabel;
+    }
+
+    public function getContentLabel()
+    {
+        if ($this->_encryptHelper === null) {
+            $this->_encryptHelper = new \common\helpers\EncryptHelper(Yii::$app->params['account_secret_key']);
+        }
+
+        return nl2br($this->_encryptHelper->decode($this->account_content));
     }
 
     /**

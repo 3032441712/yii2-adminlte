@@ -34,12 +34,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'account_cat',
                 'value' => $model->categoryLabel
             ],
-            'account_content:ntext',
+            [
+                'attribute' => 'account_content',
+                'format' => 'html',
+                'value' => $model->getContentLabel()
+            ],
             [
                 'attribute' => 'user_id',
                 'value' => $model->userLabel
             ],
-            'acount_status',
+            [
+                'attribute' => 'acount_status',
+                'value' => $model->statusLabel
+            ],
             'createtime',
             [
                 'attribute' => 'updated',

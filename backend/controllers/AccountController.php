@@ -51,9 +51,7 @@ class AccountController extends Controller
      */
     public function actionView($id)
     {
-        $encryptHelper = new \common\helpers\EncryptHelper(Yii::$app->params['account_secret_key']);
         $model = $this->findModel($id);
-        $model->account_content = $encryptHelper->decode($model->account_content);
 
         return $this->render('view', [
             'model' => $model,
