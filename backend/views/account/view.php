@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Accounts */
 
 $this->title = $model->account_id;
-$this->params['breadcrumbs'][] = ['label' => '信息详情', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '信息管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="accounts-view">
@@ -30,12 +30,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'account_id',
             'account_title',
-            'account_cat',
+            [
+                'attribute' => 'account_cat',
+                'value' => $model->categoryLabel
+            ],
             'account_content:ntext',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => $model->userLabel
+            ],
             'acount_status',
             'createtime',
-            'updated',
+            [
+                'attribute' => 'updated',
+                'label' => '更新时间'
+            ],
         ],
     ]) ?>
 

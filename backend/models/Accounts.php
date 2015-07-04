@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "accounts".
@@ -18,6 +19,60 @@ use Yii;
  */
 class Accounts extends \yii\db\ActiveRecord
 {
+    private $_categoryLabel;
+
+    private $_userLabel;
+
+    private $_statusLabel;
+
+    public static function getArrayCategory()
+    {
+        return ArrayHelper::map(AccountCategory::find()->asArray()->all(), 'cat_id', 'cat_title');
+    }
+
+    public static function getArrayUser()
+    {
+        return ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username');
+    }
+
+    public static function getArrayStatus()
+    {
+        return [
+            '0' => '禁用',
+            '1' => '启用'
+        ];
+    }
+
+    public function getCategoryLabel()
+    {
+        if ($this->_categoryLabel === null) {
+            $categorys = self::getArrayCategory();
+            $this->_categoryLabel = $categorys[$this->account_cat];
+        }
+
+        return $this->_categoryLabel;
+    }
+
+    public function getUserLabel()
+    {
+        if ($this->_userLabel === null) {
+            $categorys = self::getArrayUser();
+            $this->_userLabel = $categorys[$this->user_id];
+        }
+
+        return $this->_userLabel;
+    }
+
+    public function getStatusLabel()
+    {
+        if ($this->_statusLabel === null) {
+            $categorys = self::getArrayStatus();
+            $this->_statusLabel = $categorys[$this->acount_status];
+        }
+
+        return $this->_statusLabel;
+    }
+
     /**
      * @inheritdoc
      */

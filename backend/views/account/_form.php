@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\models\Accounts;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Accounts */
@@ -14,13 +15,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'account_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'account_cat')->textInput() ?>
+    <?= $form->field($model, 'account_cat')->dropDownList(Accounts::getArrayCategory()) ?>
 
     <?= $form->field($model, 'account_content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->dropDownList(Accounts::getArrayUser()) ?>
 
-    <?= $form->field($model, 'acount_status')->textInput() ?>
+    <?= $form->field($model, 'acount_status')->dropDownList(Accounts::getArrayStatus()) ?>
 
     <?= $form->field($model, 'createtime')->textInput() ?>
 

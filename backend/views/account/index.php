@@ -23,9 +23,24 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'account_id',
             'account_title',
-            'account_cat',
-            'user_id',
-            'acount_status',
+            [
+                'attribute' => 'account_cat',
+                'value' => function ($model)  {
+                    return $model->categoryLabel;
+                }
+            ],
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    return $model->userLabel;
+                }
+            ],
+            [
+                'attribute' => 'acount_status',
+                'value' => function ($model) {
+                    return $model->statusLabel;
+                }
+            ],
             'createtime',
             'updated',
             ['class' => 'yii\grid\ActionColumn'],
